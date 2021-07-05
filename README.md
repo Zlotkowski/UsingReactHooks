@@ -1,4 +1,4 @@
-# React Hooks
+# Simple examples of using React Hooks
 
 1.  Use State Hook
 2.  Use Effect Hook
@@ -6,4 +6,4 @@
 4.  Use Reducer
 5.  React Router
 
-# In progress
+## In progress

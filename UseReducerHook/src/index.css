@@ -1,0 +1,11 @@
+.main {
+  width: 800px;
+  padding: 50px;
+  margin: 50px auto;
+  background-color: antiquewhite;
+  border-radius: 10px;
+}
+
+th {
+  text-align: left;
+}

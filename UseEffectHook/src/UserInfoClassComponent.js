@@ -6,12 +6,6 @@ export default class UserInfoClassComponent extends Component {
     this.state = { user: {}, userId: 1 };
   }
 
-  idChange = (event) => {
-    this.setState(() => ({
-      userId: event.target.value,
-    }));
-  };
-
   componentDidMount() {
     console.log("componentDidMount runs one time!");
     fetch("https://jsonplaceholder.typicode.com/users/" + this.state.userId)
@@ -24,8 +18,7 @@ export default class UserInfoClassComponent extends Component {
   render() {
     return (
       <div>
-        User Id:
-        <input type="text" value={this.state.userId} onChange={this.idChange} />
+        User Id: {this.state.userId}
         <br />
         Name: {this.state.user.name}
         <br />

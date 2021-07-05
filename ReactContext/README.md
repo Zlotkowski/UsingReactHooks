@@ -1,1 +1,1 @@
-# This project is example of using useEffect Hook in React Library.
+# This project is example of using React Context in React Library.

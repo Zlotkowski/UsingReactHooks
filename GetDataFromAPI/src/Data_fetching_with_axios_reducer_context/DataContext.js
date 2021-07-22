@@ -13,9 +13,11 @@
 
 // export { DataContext, DataContextProvider };
 
-import axios from "axios";
-import React, { createContext, useEffect, useReducer } from "react";
-import { FETCH_ERROR, FETCH_SUCCESS } from "./constants";
+import React, { createContext, useEffect, useReducer, useState } from "react";
+import { downloadData } from "./actions";
+import { REFRESH_DATA } from "./constants";
+// import { FETCH_ERROR, FETCH_SUCCESS } from "./constants";
+// import axios from "axios";
 import DataReducer from "./DataReducer";
 
 const initialState = {
@@ -47,6 +49,7 @@ const DataContext = createContext();
 
 function DataContextProvider(props) {
   const [state, dispatch] = useReducer(DataReducer, initialState);
+  const [refresh, setRefresh] = useState(false);
 
   //   useEffect(() => {
   //     axios
@@ -62,22 +65,17 @@ function DataContextProvider(props) {
   //       });
   //   }, []);
 
+  const toggleRefresh = () => {
+    setRefresh(refresh === false ? true : false);
+  };
+
   useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => {
-        dispatch({ type: FETCH_SUCCESS, payload: response.data });
-      })
-      .catch((error) => {
-        dispatch({
-          type: FETCH_ERROR,
-          payload: `Something went wrong! :( ${error}`,
-        });
-      });
-  }, []);
+    dispatch({ type: REFRESH_DATA });
+    downloadData(dispatch);
+  }, [refresh]);
 
   return (
-    <DataContext.Provider value={{ state }}>
+    <DataContext.Provider value={{ state, toggleRefresh }}>
       {props.children}
     </DataContext.Provider>
   );

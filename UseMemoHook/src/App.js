@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 export default function App() {
   const [number, setNumber] = useState(0);
@@ -9,10 +9,16 @@ export default function App() {
     return slowFunction(number);
   }, [number]);
 
-  const themeStyles = {
-    backgroundColor: dark ? "black" : "white",
-    color: dark ? "white" : "black",
-  };
+  const themeStyles = useMemo(() => {
+    return {
+      backgroundColor: dark ? "black" : "white",
+      color: dark ? "white" : "black",
+    };
+  }, [dark]);
+
+  useEffect(() => {
+    console.log("Theme Chenged");
+  }, [themeStyles]);
 
   return (
     <>

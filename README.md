@@ -5,5 +5,6 @@
 3.  React Context
 4.  Use Reducer
 5.  React Router
+6.  Use Memo Hook
 
 ## In progress

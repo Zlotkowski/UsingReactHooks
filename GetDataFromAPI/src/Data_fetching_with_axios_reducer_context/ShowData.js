@@ -8,7 +8,7 @@ export default function ShowData(props) {
     <div>
       <button onClick={toggleRefresh}>Refresh</button>
       <div>
-        {state.loading && "Loading..."}
+        {state.loading && <p>Loading...</p>}
         {state.data &&
           state.data.map((post) => {
             return (
